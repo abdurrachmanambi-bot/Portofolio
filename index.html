@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#24262d">
+    <title>Abdurrachman Amby | Professional Portfolio</title>
+    <meta name="description" content="The portfolio of Abdurrachman Amby — information systems student and adaptable professional in administration, finance, data, and digital projects.">
+    <meta property="og:title" content="Abdurrachman Amby | Professional Portfolio">
+    <meta property="og:description" content="Administration, finance, data, and digital project experience.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f4f4f5;
+        --muted: #b3b4bc;
+        --subtle: #858791;
+        --line: rgba(255, 255, 255, .11);
+        --panel: rgba(255, 255, 255, .045);
+        --page: #14151a;
+        --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: var(--font);
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      a:focus-visible, button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+      .hero {
+        position: relative;
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+        overflow: hidden;
+        isolation: isolate;
+        background: radial-gradient(ellipse 60% 70% at 50% 35%, #545760 0%, #3d3f47 35%, #2b2d35 65%, #1c1e24 100%);
+      }
+      .nav-wrap {
+        position: fixed;
+        z-index: 50;
+        top: 24px;
+        left: 50%;
+        width: min(100% - 32px, 920px);
+        transform: translateX(-50%);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 62px;
+        padding: 9px 13px 9px 24px;
+        border: 1px solid rgba(255,255,255,.2);
+        border-radius: 999px;
+        background: rgba(255,255,255,.1);
+        box-shadow: 0 12px 32px rgba(0,0,0,.18);
+        backdrop-filter: blur(18px);
+        transition: background .25s, border-color .25s;
+      }
+      .nav.scrolled { background: rgba(23,24,29,.9); border-color: var(--line); }
+      .brand { flex: 0 0 auto; font-size: 14px; font-weight: 750; letter-spacing: -.035em; text-decoration: none; }
+      .nav-links { display: flex; align-items: center; gap: clamp(13px, 2.2vw, 28px); }
+      .nav-links a {
+        position: relative;
+        color: rgba(255,255,255,.72);
+        font-size: 12px;
+        text-decoration: none;
+        transition: color .2s;
+      }
+      .nav-links a::after {
+        position: absolute;
+        right: 0;
+        bottom: -5px;
+        left: 0;
+        height: 1px;
+        background: #fff;
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .2s;
+      }
+      .nav-links a:hover { color: #fff; }
+      .nav-links a:hover::after { transform: scaleX(1); }
+      .hire-link {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 17px;
+        border-radius: 999px;
+        background: #f7f7f8;
+        color: #18191d;
+        font-size: 12px;
+        font-weight: 650;
+        text-decoration: none;
+        transition: background .2s, transform .2s;
+      }
+      .hire-link:hover { transform: translateY(-1px); background: #dedee2; }
+      .menu-toggle {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: rgba(255,255,255,.08);
+        color: white;
+        font: inherit;
+        font-size: 20px;
+      }
+
+      .portrait {
+        position: absolute;
+        z-index: 2;
+        top: 8%;
+        left: 50%;
+        width: min(420px, 74vw);
+        transform: translateX(-50%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 77%, transparent 100%), linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 77%, transparent 100%), linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-composite: intersect;
+        animation: portrait-in .9s .15s both;
+      }
+      .portrait img { display: block; width: 100%; height: auto; }
+      .intro {
+        position: absolute;
+        z-index: 4;
+        top: 61%;
+        left: max(8%, calc((100% - 1100px) / 2));
+        margin: 0;
+        color: rgba(255,255,255,.92);
+        font-family: Caveat, cursive;
+        font-size: clamp(48px, 5vw, 68px);
+        line-height: 1;
+        animation: rise-in .7s .35s both;
+      }
+      .hero-name {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: 4%;
+        left: 0;
+        margin: 0;
+        padding: 0 12px;
+        background: linear-gradient(180deg, #fff 0%, #aaa 62%, #46474c 100%);
+        background-clip: text;
+        color: transparent;
+        font-size: clamp(42px, 8.4vw, 118px);
+        font-weight: 900;
+        letter-spacing: -.075em;
+        line-height: .92;
+        text-align: center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rise-in .8s .2s both;
+      }
+      .scroll-cue {
+        position: absolute;
+        z-index: 5;
+        bottom: 15px;
+        left: 50%;
+        color: rgba(255,255,255,.6);
+        font-size: 22px;
+        text-decoration: none;
+        transform: translateX(-50%);
+        animation: bob 1.5s ease-in-out infinite;
+      }
+
+      main { background: var(--page); }
+      .section {
+        width: min(100% - 48px, 1100px);
+        margin-inline: auto;
+        padding: 100px 0;
+        border-top: 1px solid var(--line);
+      }
+      .section:nth-child(even) { }
+      .section-kicker {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: var(--subtle);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+      }
+      .section-kicker::before { width: 19px; height: 1px; background: #8c8e98; content: ""; }
+      .section-title {
+        margin: 0 0 42px;
+        color: #f5f5f6;
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 800;
+        letter-spacing: -.055em;
+        line-height: 1.1;
+      }
+      .reveal { transition: opacity .7s ease, transform .7s ease; }
+      .js .reveal { opacity: 0; transform: translateY(24px); }
+      .js .reveal.visible { opacity: 1; transform: translateY(0); }
+      .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: start; }
+      .about-copy p { margin: 0 0 19px; color: var(--muted); font-size: 16px; line-height: 1.85; }
+      .contact-lines { display: flex; flex-direction: column; gap: 12px; margin-top: 27px; }
+      .contact-lines a, .contact-lines span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #c5c6cc;
+        font-size: 13px;
+        text-decoration: none;
+      }
+      .contact-lines a:hover { color: #fff; }
+      .line-icon { width: 17px; color: #9b9da7; text-align: center; }
+      .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+      .stat, .panel, .project, .experience-card {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        transition: border-color .25s, background .25s, transform .25s;
+      }
+      .stat { min-height: 130px; padding: 22px; border-radius: 17px; }
+      .stat:hover, .panel:hover, .project:hover, .experience-card:hover { border-color: rgba(255,255,255,.23); background-color: rgba(255,255,255,.065); }
+      .stat strong {
+        display: block;
+        margin-bottom: 7px;
+        background: linear-gradient(135deg, #fff, #92939b);
+        background-clip: text;
+        color: transparent;
+        font-size: 36px;
+        font-weight: 850;
+        letter-spacing: -.06em;
+        -webkit-background-clip: text;
+      }
+      .stat span { color: var(--subtle); font-size: 12px; line-height: 1.5; }
+
+      .timeline { position: relative; display: grid; gap: 18px; }
+      .timeline::before { position: absolute; top: 18px; bottom: 18px; left: 9px; width: 1px; background: var(--line); content: ""; }
+      .experience-card { position: relative; margin-left: 34px; padding: 23px 25px; border-radius: 17px; }
+      .experience-card::before {
+        position: absolute;
+        top: 26px;
+        left: -32px;
+        width: 11px;
+        height: 11px;
+        border: 2px solid #b8bac3;
+        border-radius: 50%;
+        background: var(--page);
+        content: "";
+      }
+      .experience-head { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 14px; }
+      .experience-head h3, .project h3, .panel h3 { margin: 0 0 5px; color: #f4f4f5; font-size: 17px; font-weight: 700; letter-spacing: -.025em; }
+      .company { margin: 0; color: #c0c1c8; font-size: 13px; }
+      .sector { color: var(--subtle); }
+      .date { flex: 0 0 auto; padding-top: 3px; color: var(--subtle); font-size: 12px; text-align: right; }
+      .experience-card ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+      .experience-card li { display: flex; gap: 9px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .experience-card li::before { color: #9da0aa; content: "›"; }
+      .experience-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+      .pill { display: inline-flex; align-items: center; padding: 6px 10px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.045); color: #c4c5cb; font-size: 11px; }
+      .other-experience { margin-top: 22px; }
+
+      .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+      .project { display: flex; min-height: 275px; flex-direction: column; padding: 25px; border-radius: 18px; }
+      .project:nth-child(4n+1) { background-image: linear-gradient(145deg, rgba(78,112,170,.19), transparent 75%); }
+      .project:nth-child(4n+2) { background-image: linear-gradient(145deg, rgba(61,138,111,.17), transparent 75%); }
+      .project:nth-child(4n+3) { background-image: linear-gradient(145deg, rgba(174,120,67,.17), transparent 75%); }
+      .project:nth-child(4n) { background-image: linear-gradient(145deg, rgba(161,71,77,.17), transparent 75%); }
+      .project:hover { transform: translateY(-3px); }
+      .project-subtitle { margin: 0 0 12px; color: var(--subtle); font-size: 12px; }
+      .project-role { align-self: flex-start; margin-bottom: 14px; }
+      .project-description { margin: 0 0 22px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+      .project-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+
+      .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+      .panel { padding: 22px; border-radius: 17px; }
+      .panel h3 { margin-bottom: 16px; font-size: 14px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip { padding: 7px 10px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.055); color: #d1d2d7; font-size: 11px; line-height: 1.2; }
+      .language-panel { margin-top: 15px; }
+      .language-row + .language-row { margin-top: 19px; }
+      .language-label { display: flex; justify-content: space-between; margin-bottom: 8px; color: #d6d6da; font-size: 12px; }
+      .language-label span:last-child { color: var(--subtle); }
+      .language-track { height: 5px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.1); }
+      .language-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#f3f3f5,#858791); transition: width 1s ease .2s; }
+      .visible .language-fill { width: var(--level); }
+
+      .education-grid, .extra-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .education-card { min-height: 154px; }
+      .education-card p, .small-copy { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+      .education-card .date { text-align: left; margin-bottom: 11px; }
+      .education-card .pill { margin-top: 15px; }
+      .extra-grid { margin-top: 15px; }
+      .extra-item { display: flex; gap: 13px; align-items: flex-start; }
+      .extra-symbol { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 1px solid rgba(255,255,255,.14); border-radius: 11px; background: rgba(255,255,255,.07); color: #dedee2; font-size: 14px; }
+      .extra-item strong { display: block; margin: 2px 0 4px; color: #e8e8eb; font-size: 12px; }
+      .extra-item span { display: block; color: var(--subtle); font-size: 11px; line-height: 1.5; }
+
+      .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
+      .contact-copy { margin: 0 0 23px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+      .open-card { padding: 36px 25px; border: 1px solid var(--line); border-radius: 19px; background: rgba(255,255,255,.045); text-align: center; }
+      .open-card h3 {
+        margin: 0 0 8px;
+        background: linear-gradient(135deg, #fff, #898b94);
+        background-clip: text;
+        color: transparent;
+        font-size: clamp(30px, 4vw, 46px);
+        font-weight: 850;
+        letter-spacing: -.07em;
+        -webkit-background-clip: text;
+      }
+      .open-card p { margin: 0 0 22px; color: var(--subtle); font-size: 12px; }
+      .open-card .hire-link { padding: 13px 20px; font-size: 13px; }
+      footer { padding: 24px; border-top: 1px solid var(--line); color: #777983; font-size: 11px; text-align: center; }
+
+      @keyframes portrait-in { from { opacity: 0; translate: 0 20px; } to { opacity: 1; translate: 0 0; } }
+      @keyframes rise-in { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+      @keyframes bob { 0%,100% { translate: 0 0; } 50% { translate: 0 6px; } }
+
+      @media (max-width: 760px) {
+        .nav-wrap { top: 14px; width: calc(100% - 22px); }
+        .nav { min-height: 56px; padding: 7px 8px 7px 16px; gap: 9px; }
+        .brand { font-size: 12px; }
+        .nav-links { display: none; position: absolute; top: 64px; right: 0; left: 0; padding: 13px; border: 1px solid var(--line); border-radius: 20px; background: rgba(24,25,30,.96); box-shadow: 0 14px 30px rgba(0,0,0,.25); }
+        .nav-links.open { display: grid; gap: 0; }
+        .nav-links a { padding: 12px 10px; font-size: 14px; }
+        .nav-links a::after { display: none; }
+        .hire-link { margin-left: auto; padding: 10px 12px; font-size: 11px; }
+        .menu-toggle { display: inline-grid; flex: 0 0 40px; place-items: center; cursor: pointer; }
+        .portrait { top: 12%; width: min(360px, 92vw); }
+        .intro { top: 59%; left: 7%; font-size: 52px; }
+        .hero-name { bottom: 7%; padding-inline: 9px; font-size: clamp(37px, 9.8vw, 72px); letter-spacing: -.08em; }
+        .scroll-cue { bottom: 10px; }
+        .section { width: calc(100% - 38px); padding: 76px 0; }
+        .section-title { margin-bottom: 30px; }
+        .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+        .experience-head { flex-direction: column; gap: 8px; }
+        .date { text-align: left; }
+        .project-grid, .skill-grid, .education-grid, .extra-grid { grid-template-columns: 1fr; }
+        .project { min-height: auto; }
+        .contact-grid { gap: 25px; }
+      }
+      @media (max-width: 420px) {
+        .brand { max-width: 135px; font-size: 11px; }
+        .hero-name { bottom: 8%; font-size: 9.4vw; letter-spacing: -.085em; }
+        .intro { top: 60%; font-size: 46px; }
+        .stat { min-height: 112px; padding: 17px; }
+        .stat strong { font-size: 31px; }
+        .experience-card { margin-left: 23px; padding: 19px 17px; }
+        .experience-card::before { left: -23px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        .js .reveal { opacity: 1; transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <div class="nav-wrap">
+        <nav class="nav" aria-label="Main navigation">
+          <a class="brand" href="#top">Abdurrachman Amby</a>
+          <div class="nav-links" id="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <a class="hire-link" href="mailto:Abdurrachmanambi@gmail.com">Hire Me <span aria-hidden="true">↗</span></a>
+          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+        </nav>
+      </div>
+      <div class="portrait" aria-hidden="true"><img src="./portrait.jpg" alt=""></div>
+      <p class="intro">hi, i'm</p>
+      <h1 class="hero-name">Abdurrachman Amby</h1>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to about section">↓</a>
+    </header>
+
+    <main>
+      <section class="section" id="about">
+        <div class="reveal">
+          <div class="section-kicker">About Me</div>
+          <h2 class="section-title">The person behind the work</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>Adaptable and detail-oriented professional with hands-on experience in document administration, finance support, data management, and web development. Currently serving as CTO at BUAHARA while pursuing a Bachelor's degree in Information Systems at Universitas Bakrie, Jakarta.</p>
+            <p>Eight years of competitive basketball have instilled discipline, leadership, and the ability to perform reliably under pressure — qualities I carry directly into my professional work ethic. I thrive in fast-moving environments and enjoy building things that make a real impact.</p>
+            <div class="contact-lines">
+              <a href="mailto:Abdurrachmanambi@gmail.com"><span class="line-icon" aria-hidden="true">✉</span>Abdurrachmanambi@gmail.com</a>
+              <a href="tel:+6282258173441"><span class="line-icon" aria-hidden="true">⌕</span>+62 822-5817-3441</a>
+              <span><span class="line-icon" aria-hidden="true">⌖</span>Jakarta Pusat, Indonesia</span>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat reveal"><strong>3+</strong><span>Years of professional experience</span></div>
+            <div class="stat reveal"><strong>4+</strong><span>Academic and personal projects</span></div>
+            <div class="stat reveal"><strong>6+</strong><span>Organizations contributed to</span></div>
+            <div class="stat reveal"><strong>2026</strong><span>Expected graduation year</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="reveal">
+          <div class="section-kicker">Work Experience</div>
+          <h2 class="section-title">Where I've contributed</h2>
+        </div>
+        <div class="timeline">
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Chief Technology Officer</h3><p class="company">BUAHARA <span class="sector">· Supply Management</span></p></div><span class="date">Apr 2026 – Present</span></div>
+            <ul><li>Built the company structure and digital infrastructure.</li><li>Digitalized company operations and developed the company profile.</li><li>Established and maintained client relationships.</li></ul>
+            <div class="experience-tags"><span class="pill">Leadership</span><span class="pill">Digital Operations</span><span class="pill">Client Relations</span></div>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Freelance Developer</h3><p class="company">PT. Prioritas Partner Nusantara <span class="sector">· Security &amp; Risk Management</span></p></div><span class="date">Jul 2026 – Present</span></div>
+            <ul><li>Built the company profile and developed the enterprise website.</li></ul>
+            <div class="experience-tags"><span class="pill">Web Development</span><span class="pill">Company Profile</span></div>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Founder</h3><p class="company">Cempedak Gen Zi <span class="sector">· Food &amp; Beverage Distribution</span></p></div><span class="date">Jun 2026 – Jul 2026</span></div>
+            <ul><li>Built the business concept and operational model.</li><li>Supervised daily workflows, supply operations, and employees.</li><li>Led marketing initiatives for the business.</li></ul>
+            <div class="experience-tags"><span class="pill">Entrepreneurship</span><span class="pill">Operations</span><span class="pill">Marketing</span></div>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Assistant to the CEO</h3><p class="company">Gofa Farm <span class="sector">· Livestock Supplier &amp; Distributor</span></p></div><span class="date">Apr 2026 – May 2026</span></div>
+            <ul><li>Created a product catalog and assisted the CEO with day-to-day responsibilities.</li></ul>
+            <div class="experience-tags"><span class="pill">Executive Support</span><span class="pill">Catalog Development</span></div>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Finance &amp; Data Administration Intern</h3><p class="company">Gofa Farm <span class="sector">· Livestock Supplier &amp; Distributor</span></p></div><span class="date">Feb 2024 – Aug 2024</span></div>
+            <ul><li>Managed petty cash, reconciled transactions, and processed customer payments.</li><li>Prepared daily cash-closing reports and issued accurate client invoices.</li><li>Updated sales and petty cash reports to keep management informed.</li></ul>
+            <div class="experience-tags"><span class="pill">Finance Support</span><span class="pill">Reporting</span><span class="pill">Data Administration</span></div>
+          </article>
+          <article class="experience-card reveal">
+            <div class="experience-head"><div><h3>Freelance Document Administrator</h3><p class="company">PT. Amal Bakti Mulia <span class="sector">· Cafés &amp; Bistros</span></p></div><span class="date">Jan 2023 – Present</span></div>
+            <ul><li>Organized and maintained physical and digital company documents.</li><li>Reviewed documents for accuracy, digitized records, and improved retrieval.</li><li>Coordinated with HR, finance, and legal while protecting confidential records.</li></ul>
+            <div class="experience-tags"><span class="pill">Document Control</span><span class="pill">Data Accuracy</span><span class="pill">Confidentiality</span></div>
+          </article>
+        </div>
+        <article class="experience-card other-experience reveal">
+          <div class="experience-head"><div><h3>Additional Experience</h3><p class="company">Supply Chain Broker · PT. Fidel Pratama Sukses</p></div><span class="date">Sep 2024 – Present</span></div>
+          <ul><li>Marketed the enterprise supply chain and connected clients with founders.</li></ul>
+          <div class="experience-tags"><span class="pill">Business Development</span><span class="pill">Networking</span></div>
+        </article>
+        <article class="experience-card other-experience reveal">
+          <div class="experience-head"><div><h3>Freelance Basketball Coach</h3><p class="company">SMAN 3 Jakarta Selatan</p></div><span class="date">Jan 2024 – Feb 2024</span></div>
+          <ul><li>Trained student-athletes in technical skills, fitness, and game strategy.</li><li>Reviewed match performance and collaborated on player development plans.</li></ul>
+          <div class="experience-tags"><span class="pill">Coaching</span><span class="pill">Leadership</span><span class="pill">Teamwork</span></div>
+        </article>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="reveal">
+          <div class="section-kicker">Selected Work</div>
+          <h2 class="section-title">Projects I've contributed to</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal">
+            <h3>Find Seat</h3><p class="project-subtitle">Cinema Ticket Booking Mobile App</p><span class="pill project-role">UI &amp; Authentication Support</span>
+            <p class="project-description">Built login and registration screens in Flutter, integrated Firebase Authentication, and managed navigation between screens. Tested the user flow and recommended usability improvements.</p>
+            <div class="project-stack"><span class="pill">Flutter</span><span class="pill">Firebase Auth</span><span class="pill">Mobile UI</span></div>
+          </article>
+          <article class="project reveal">
+            <h3>Amby Shoes</h3><p class="project-subtitle">E-Commerce Website</p><span class="pill project-role">UI Designer &amp; Support Developer</span>
+            <p class="project-description">Designed homepage, catalog, and product detail layouts. Built the interface with HTML, CSS, and Django templates, collaborating on product data, cart, and checkout experiences.</p>
+            <div class="project-stack"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">Django</span><span class="pill">UI/UX</span></div>
+          </article>
+          <article class="project reveal">
+            <h3>Bakrie Laboratory Website</h3><p class="project-subtitle">Data Management, Scheduling &amp; Reporting</p><span class="pill project-role">Data Management</span>
+            <p class="project-description">Developed a lab website for integrated data management, scheduling, and reporting. Led requirements analysis and UI/UX design using Waterfall SDLC; prepared WBS, Gantt charts, and critical path schedules.</p>
+            <div class="project-stack"><span class="pill">Waterfall SDLC</span><span class="pill">UI/UX</span><span class="pill">Microsoft Project</span></div>
+          </article>
+          <article class="project reveal">
+            <h3>Netflix Application Testing</h3><p class="project-subtitle">Quality Assurance &amp; User Experience Analysis</p><span class="pill project-role">QA &amp; Analyst</span>
+            <p class="project-description">Conducted functional, usability, performance, and security testing using UEQ. Designed a survey, analyzed user experience results, and presented recommendations for improvement.</p>
+            <div class="project-stack"><span class="pill">UEQ</span><span class="pill">QA Testing</span><span class="pill">Analysis</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="reveal">
+          <div class="section-kicker">Capabilities</div>
+          <h2 class="section-title">Skills &amp; tools</h2>
+        </div>
+        <div class="skill-grid">
+          <article class="panel reveal"><h3>Technical Skills</h3><div class="chips"><span class="chip">Data Analysis</span><span class="chip">Database Administration</span><span class="chip">UI/UX &amp; Product Design</span><span class="chip">IT Support</span><span class="chip">Troubleshooting</span><span class="chip">Document Administration</span><span class="chip">Finance &amp; Data Support</span><span class="chip">Web Development</span></div></article>
+          <article class="panel reveal"><h3>Tools &amp; Software</h3><div class="chips"><span class="chip">Figma</span><span class="chip">Canva</span><span class="chip">Power BI</span><span class="chip">Microsoft Office</span><span class="chip">Python</span><span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">HTML / CSS</span><span class="chip">Django</span></div></article>
+          <article class="panel reveal"><h3>Professional Strengths</h3><div class="chips"><span class="chip">Leadership</span><span class="chip">Critical Thinking</span><span class="chip">Problem Solving</span><span class="chip">Communication</span><span class="chip">Teamwork</span><span class="chip">Public Speaking</span><span class="chip">Discipline</span><span class="chip">Attention to Detail</span></div></article>
+        </div>
+        <article class="panel language-panel reveal">
+          <h3>Languages</h3>
+          <div class="language-row"><div class="language-label"><span>Indonesian</span><span>Native</span></div><div class="language-track"><div class="language-fill" style="--level:100%"></div></div></div>
+          <div class="language-row"><div class="language-label"><span>English</span><span>Fluent</span></div><div class="language-track"><div class="language-fill" style="--level:85%"></div></div></div>
+        </article>
+      </section>
+
+      <section class="section" id="education">
+        <div class="reveal">
+          <div class="section-kicker">Education &amp; Involvement</div>
+          <h2 class="section-title">Learning and leadership</h2>
+        </div>
+        <div class="education-grid">
+          <article class="panel education-card reveal"><div class="date">Sep 2022 – Present</div><h3>Bachelor of Information Systems</h3><p>Universitas Bakrie · Jakarta Selatan</p><span class="pill">Currently studying</span></article>
+          <article class="panel education-card reveal"><div class="date">Jul 2019 – May 2022</div><h3>High School Diploma</h3><p>SMAN 3 Jakarta Selatan</p><span class="pill">Completed</span></article>
+        </div>
+        <div class="extra-grid">
+          <article class="panel extra-item reveal"><span class="extra-symbol" aria-hidden="true">+</span><div><strong>Leadership &amp; Problem Solving</strong><span>Soft Skills Training Certificate</span></div></article>
+          <article class="panel extra-item reveal"><span class="extra-symbol" aria-hidden="true">+</span><div><strong>Organizing Committee Member</strong><span>BEPRO DKI Jakarta · Sep 2024 – Jun 2025</span></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="reveal">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let's work together</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="contact-copy">I'm open to full-time positions, freelance projects, and collaboration opportunities. If you're building something great and need someone disciplined, adaptable, and detail-oriented, let's talk.</p>
+            <div class="contact-lines">
+              <a href="mailto:Abdurrachmanambi@gmail.com"><span class="line-icon" aria-hidden="true">✉</span>Abdurrachmanambi@gmail.com</a>
+              <a href="tel:+6282258173441"><span class="line-icon" aria-hidden="true">⌕</span>+62 822-5817-3441</a>
+              <span><span class="line-icon" aria-hidden="true">⌖</span>Jakarta Pusat, Indonesia</span>
+            </div>
+          </div>
+          <aside class="open-card reveal">
+            <h3>Open to Work</h3>
+            <p>Available for full-time and freelance opportunities</p>
+            <a class="hire-link" href="mailto:Abdurrachmanambi@gmail.com">Send a Message <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer>© 2026 Abdurrachman Amby · Jakarta, Indonesia</footer>
+
+    <script>
+      const nav = document.querySelector('.nav');
+      const menuButton = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      function updateNav() {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        menuButton.textContent = isOpen ? '×' : '☰';
+      });
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Open navigation menu');
+          menuButton.textContent = '☰';
+        });
+      });
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('visible'));
+      }
+    </script>
+  </body>
+</html>
